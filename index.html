@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Científica</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Científica</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="calculator">
-        <input type="text" id="display" disabled>
-        <div class="buttons">
-            <button onclick="clearDisplay()">C</button>
-            <button onclick="deleteLast()">⌫</button>
-            <button onclick="addToDisplay('%')">%</button>
-            <button onclick="addToDisplay('/')">/</button>
 
-            <button onclick="addToDisplay('7')">7</button>
-            <button onclick="addToDisplay('8')">8</button>
-            <button onclick="addToDisplay('9')">9</button>
-            <button onclick="addToDisplay('*')">*</button>
+<div class="calculadora">
+  <!-- Tela da calculadora -->
+  <div class="tela" id="tela">0</div>
 
-            <button onclick="addToDisplay('4')">4</button>
-            <button onclick="addToDisplay('5')">5</button>
-            <button onclick="addToDisplay('6')">6</button>
-            <button onclick="addToDisplay('-')">-</button>
+  <!-- Primeira linha de botões -->
+  <button class="botao botao-operacao" onclick="limpar()">AC</button>
+  <button class="botao botao-operacao" onclick="calcularTrigonometria('tan')">TG</button>
+  <button class="botao botao-operacao" onclick="calcularTrigonometria('sin')">SEN</button>
+  <button class="botao botao-operacao" onclick="calcularTrigonometria('cos')">COS</button>
 
-            <button onclick="addToDisplay('1')">1</button>
-            <button onclick="addToDisplay('2')">2</button>
-            <button onclick="addToDisplay('3')">3</button>
-            <button onclick="addToDisplay('+')">+</button>
+  <!-- Segunda linha de botões -->
+  <button class="botao" onclick="adicionarNumero(7)">7</button>
+  <button class="botao" onclick="adicionarNumero(8)">8</button>
+  <button class="botao" onclick="adicionarNumero(9)">9</button>
+  <button class="botao botao-operacao" onclick="adicionarOperacao('/')">÷</button>
 
-            <button onclick="addToDisplay('0')">0</button>
-            <button onclick="addToDisplay('.')">.</button>
-            <button onclick="calculate()">=</button>
+  <!-- Terceira linha de botões -->
+  <button class="botao" onclick="adicionarNumero(4)">4</button>
+  <button class="botao" onclick="adicionarNumero(5)">5</button>
+  <button class="botao" onclick="adicionarNumero(6)">6</button>
+  <button class="botao botao-operacao" onclick="adicionarOperacao('*')">×</button>
 
-            <button onclick="calculateSin()">sin</button>
-            <button onclick="calculateCos()">cos</button>
-            <button onclick="calculateTan()">tan</button>
-            <button onclick="calculateSqrt()">√</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <!-- Quarta linha de botões -->
+  <button class="botao" onclick="adicionarNumero(1)">1</button>
+  <button class="botao" onclick="adicionarNumero(2)">2</button>
+  <button class="botao" onclick="adicionarNumero(3)">3</button>
+  <button class="botao botao-operacao" onclick="adicionarOperacao('-')">-</button>
+
+  <!-- Quinta linha de botões -->
+  <button class="botao botao-zero" onclick="adicionarNumero(0)">0</button>
+  <button class="botao" onclick="calcular()">=</button>
+  <button class="botao botao-operacao" onclick="adicionarOperacao('+')">+</button>
+</div>
+
+<script src="script.js"></script>
+
 </body>
-
 </html>

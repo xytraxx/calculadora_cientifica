@@ -1,45 +1,51 @@
-function clearDisplay() {
-  document.getElementById("display").value = "";
+let expressao = "";
+
+function atualizarTela(valor) {
+  document.getElementById("tela").innerText = valor;
 }
 
-function deleteLast() {
-  let display = document.getElementById("display");
-  display.value = display.value.slice(0, -1);
+function adicionarNumero(numero) {
+  if (expressao === "0") expressao = ""; // Para evitar 0 à esquerda
+  expressao += numero;
+  atualizarTela(expressao);
 }
 
-function addToDisplay(value) {
-  document.getElementById("display").value += value;
+function adicionarOperacao(operacao) {
+  if (/[+\-*/]$/.test(expressao)) return; // Evita duas operações consecutivas
+  expressao += operacao;
+  atualizarTela(expressao);
 }
 
-function calculate() {
-  let display = document.getElementById("display");
+function calcular() {
   try {
-    display.value = eval(display.value);
-  } catch {
-    display.value = "Erro";
+    const resultado = eval(expressao);
+    expressao = String(resultado);
+    atualizarTela(resultado);
+  } catch (e) {
+    atualizarTela("Erro");
+    expressao = "";
   }
 }
 
-function calculateSin() {
-  let display = document.getElementById("display");
-  display.value = Math.sin(toRadians(display.value));
+function limpar() {
+  expressao = "0";
+  atualizarTela(expressao);
 }
 
-function calculateCos() {
-  let display = document.getElementById("display");
-  display.value = Math.cos(toRadians(display.value));
-}
-
-function calculateTan() {
-  let display = document.getElementById("display");
-  display.value = Math.tan(toRadians(display.value));
-}
-
-function calculateSqrt() {
-  let display = document.getElementById("display");
-  display.value = Math.sqrt(display.value);
-}
-
-function toRadians(value) {
-  return (value * Math.PI) / 180;
+function calcularTrigonometria(funcao) {
+  try {
+    let valor = eval(expressao);
+    if (funcao === 'sin') {
+      valor = Math.sin(valor * Math.PI / 180); // Conversão para radianos
+    } else if (funcao === 'cos') {
+      valor = Math.cos(valor * Math.PI / 180);
+    } else if (funcao === 'tan') {
+      valor = Math.tan(valor * Math.PI / 180);
+    }
+    expressao = String(valor);
+    atualizarTela(valor);
+  } catch (e) {
+    atualizarTela("Erro");
+    expressao = "";
+  }
 }
